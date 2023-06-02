@@ -2,7 +2,8 @@
 
 namespace Alura\Banco\Modelo\Conta;
 //a separação de namespaces é com contrabarra. Namespaces é como se fossem pacotes
-class Conta
+abstract class Conta //quando eu digo que uma classe é abstrata eu estou dizendo: olha eu tenho aqui definição, mas minha classe ainda não está completa, faltam coisas,
+// voce precisa extender essa classe para completar ela (ela não é completa)
 {
     private $titular;
     protected $saldo;
@@ -22,7 +23,7 @@ class Conta
 
     public function saca(float $valorASacar): void
     {
-        $tarifaSaque = $valorASacar * 0.05;
+        $tarifaSaque = $valorASacar * $this->percentualTarifa();
         $valorSaque = $valorASacar + $tarifaSaque;
         if ($valorSaque > $this->saldo) {
             echo "Saldo indisponível";
@@ -42,16 +43,6 @@ class Conta
         $this->saldo += $valorADepositar;
     }
 
-    public function transfere(float $valorATransferir, Conta $contaDestino): void
-    {
-        if ($valorATransferir > $this->saldo) {
-            echo "Saldo indisponível";
-            return;
-        }
-
-        $this->saca($valorATransferir);
-        $contaDestino->deposita($valorATransferir);
-    }
 
     public function recuperaSaldo(): float
     {
@@ -72,4 +63,6 @@ class Conta
     {
         return self::$numeroDeContas;
     }
+
+    abstract protected function percentualTarifa(): float; //se eu tenho um método abstrato, todas as classes que extenderm dela, são obrigados a implementar
 }
