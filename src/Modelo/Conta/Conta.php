@@ -1,5 +1,6 @@
 <?php
 
+namespace Alura\Banco\Modelo\Conta; //a separação de namespaces é com contrabarra. Namespaces é como se fossem pacotes
 class Conta
 {
     private $titular;

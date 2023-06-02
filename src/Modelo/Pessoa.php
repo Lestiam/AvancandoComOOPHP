@@ -1,5 +1,7 @@
 <?php
 
+namespace Alura\Banco\Modelo;//o namespace não é obrigatório, mas facilita a visualização. Sei que Pessoa esta dentro da pasta Modelo
+
 class Pessoa
 {
 
@@ -8,7 +10,7 @@ class Pessoa
 
     public function __construct(string $nome, CPF $cpf)
     {
-        $this->validaNomeTitular();
+        $this->validaNomeTitular($nome, $cpf);
         $this->nome = $nome;
         $this->cpf = $cpf;
     }

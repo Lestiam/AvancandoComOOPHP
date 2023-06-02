@@ -1,5 +1,7 @@
 <?php
 
+namespace Alura\Banco\Modelo; //Alura\Banco é o nome raiz do meu nasmespace
+
 class CPF
 {
     private $numero;
