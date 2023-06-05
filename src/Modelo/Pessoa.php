@@ -2,7 +2,7 @@
 
 namespace Alura\Banco\Modelo;//o namespace não é obrigatório, mas facilita a visualização. Sei que Pessoa esta dentro da pasta Modelo
 
-class Pessoa
+abstract class Pessoa
 {
 
     protected String $nome; //consigo acessa-lo tanto na propria classe quanto nas filhas desta classe

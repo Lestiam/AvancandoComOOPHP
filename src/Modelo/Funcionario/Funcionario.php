@@ -7,14 +7,14 @@ use Alura\Banco\Modelo\CPF;
 use Alura\Banco\Modelo\Pessoa;
 
 abstract class Funcionario extends Pessoa //como não faz mais sentido instanciar um "funcionario" ao inves de um cargo, esta classe se tornou abstrata
+    //a classe funcionario é um conceito, por isso não consigo instanciar um método abstrato
+    //sempre que tem a palavra abstract na classe, eu sei que esta relacionada a herança, algum classe ema lgum lugar precisa extender funcionario, para que tudo isso faça sentido, se não, tudo isso é inútil
 {
-    private String $cargo;
     private float $salario;
 
-    public function __construct(string $nome, CPF $cpf, string $cargo, float $salario)
+    public function __construct(string $nome, CPF $cpf, float $salario)
     {
         parent::__construct($nome,$cpf); //seria o "super" no java; É para chamar a classe mãe ou pai, parent são pais em ingles. Acesso metodos e atributos da classe base
-        $this->cargo = $cargo;
         $this->salario = $salario;
     }
 
@@ -39,9 +39,7 @@ abstract class Funcionario extends Pessoa //como não faz mais sentido instancia
         return $this->salario;
     }
 
-    public function calculaBonificacao():float //se eu não sobscrever o método em Diretor, Gerente, etc, este método continua válido
-    {
-        return $this->salario * 0.1;
-    }
-
+    abstract public function calculaBonificacao():float; //toda vez que preciso criar um método que precisa ser obrigatorio, crio um método abstrato
+    //todo funcionario vai ter esta implementação, mas não existe uma implementação padrão, eu não tenho na classe Funcionario uma implementação padrão, por isso este método é abstrato.
+    //o contrario de abstrato é concreto
 }

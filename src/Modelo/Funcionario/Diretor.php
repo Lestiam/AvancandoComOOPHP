@@ -2,7 +2,9 @@
 
 namespace Alura\Banco\Modelo\Funcionario;
 
-class Diretor extends Funcionario //o diretor É UM Funcionario
+use Alura\Banco\Modelo\Autenticavel;
+
+class Diretor extends Funcionario implements Autenticavel //o diretor É UM Funcionario. o implements obriga a gente a implementar o método da interface. Eu posso implementar varias interfaces ao mesmo tempo
 {
     public function calculaBonificacao(): float //sobreescreveu o método padrão do funcionario
     {

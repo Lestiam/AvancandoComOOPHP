@@ -9,12 +9,13 @@ require_once 'autoload.php';
 
 use Alura\Banco\Service\ControladorDeBonificacoes;
 use Alura\Banco\Modelo\{CPF};
-use Alura\Banco\Modelo\Funcionario\{Gerente, Diretor, Desenvolvedor}; // alt + enter em cima do nome da classe para importa-la aqui
+use Alura\Banco\Modelo\Funcionario\{EditorVideo, Gerente, Diretor, Desenvolvedor};
+
+// alt + enter em cima do nome da classe para importa-la aqui
 
 $umFuncionario = new Desenvolvedor(
     'Igor Teles',
     new CPF('123.456.789-10'),
-    'Desenvolvedor',
     1000
 );
 
@@ -23,20 +24,25 @@ $umFuncionario->sobeDeNivel(); //aumenta o salario do desenvolvedor
 $umaFuncionaria = new Gerente(
     'Patricia',
     new CPF('987.654.321-10'),
-    'Gerente',
     3000
 );
 
 $umDiretor = new Diretor(
     'Ana Paula',
     new CPF('132.951.789-11'),
-    'Diretor',
     5000
+);
+
+$umEditor = new EditorVideo(
+    'Paulo',
+    new CPF('456.987.231-11'),
+    1500
 );
 
 $controlador = new ControladorDeBonificacoes();
 $controlador->adicionaBonificacao($umFuncionario); //adiciono a bonificação do igor
 $controlador->adicionaBonificacao($umaFuncionaria); //adiciono a bonificação da Patricia
 $controlador->adicionaBonificacao($umDiretor); //adiciono a bonificação da Ana
+$controlador->adicionaBonificacao($umEditor);
 
 echo $controlador->recuperaTotal(); //pego o total das bonificações gastas
