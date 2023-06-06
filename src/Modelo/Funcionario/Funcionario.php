@@ -20,7 +20,7 @@ abstract class Funcionario extends Pessoa //como não faz mais sentido instancia
 
     public function alteraNome(string $nome): void
     {
-        $this->validaNomeTitular($nome);
+        $this->validaNome($nome);
         $this->nome = $nome;
     }
 

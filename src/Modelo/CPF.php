@@ -2,7 +2,7 @@
 
 namespace Alura\Banco\Modelo; //Alura\Banco é o nome raiz do meu nasmespace
 
-class CPF
+final class CPF //se eu digo que uma classe é final, quer dizer que ninguem mais extende dela, serve pq por exemplo, podemos acabar tirando a validação caso extendamos de CPF
 {
     private $numero;
 

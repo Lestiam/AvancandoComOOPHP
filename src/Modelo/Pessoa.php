@@ -4,13 +4,14 @@ namespace Alura\Banco\Modelo;//o namespace não é obrigatório, mas facilita a 
 
 abstract class Pessoa
 {
+    use AcessoPropriedades;
 
     protected String $nome; //consigo acessa-lo tanto na propria classe quanto nas filhas desta classe
     protected CPF $cpf;
 
     public function __construct(string $nome, CPF $cpf)
     {
-        $this->validaNomeTitular($nome, $cpf);
+        $this->validaNome($nome, $cpf);
         $this->nome = $nome;
         $this->cpf = $cpf;
     }
@@ -25,7 +26,7 @@ abstract class Pessoa
         return $this->cpf->recuperaNumero();
     }
 
-    protected function validaNomeTitular(string $nomeTitular)
+    final protected function validaNome(string $nomeTitular) //o final no mpétodo significa que podemos extender a classe Pessoa, mas não podemos sobrescrever este método
     {
         if (strlen($nomeTitular) < 5) {
             echo "Nome precisa ter pelo menos 5 caracteres";

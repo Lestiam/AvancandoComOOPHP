@@ -16,7 +16,7 @@ class Titular extends Pessoa implements Autenticavel
     public function __construct(CPF $cpf, string $nome, Endereco $endereco)
     {
         parent::__construct($nome, $cpf); //seria o "super" no java; É para chamar a classe mãe ou pai, parent são pais em ingles. Acesso metodos e atributos da classe base
-        $this->validaNomeTitular($nome);
+        $this->validaNome($nome);
         $this->endereco = $endereco;
     }
 
